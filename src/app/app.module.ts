@@ -3,14 +3,28 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
+import { SearchPipe, UnslugifyPipe } from '@app/pipes';
+
+import { AuthGuard } from '@app/guards';
+
+import { AlertService } from '@app/services';
+
+import { customHttpProvider } from '@app/interceptors';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchPipe,
+    UnslugifyPipe
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    customHttpProvider,
+    AuthGuard,
+    AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,17 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
+    "paths": {
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ],
+      "@app/core/*": [
+        "src/app/core/*"
+      ]
+    },
     "typeRoots": [
       "node_modules/@types"
     ],

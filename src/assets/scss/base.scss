@@ -1,0 +1,260 @@
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+div::after {
+  @include pseudo;
+  top: -1rem; left: -1rem;
+  width: 1rem; height: 1rem;
+}
+
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+div {
+  @include responsive-ratio(16,9);
+}
+
+@mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
+  @include pseudo($pos: $position);
+  width: 0;
+  height: 0;
+  @if $round {
+    border-radius: 3px;
+  }
+  @if $direction == down {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round( $size / 2.5 );
+  } @else if $direction == up {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round( $size / 2.5 );
+  } @else if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
+  } @else if  $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
+  }
+}
+
+@mixin font-source-sans($size: false, $colour: false, $weight: false,  $lh: false) {
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  @if $size { font-size: $size; }
+  @if $colour { color: $colour; }
+  @if $weight { font-weight: $weight; }
+  @if $lh { line-height: $lh; }
+}
+
+@mixin input-placeholder {
+  &.placeholder { @content; }
+  &:-moz-placeholder { @content; }
+  &::-moz-placeholder { @content; }
+  &:-ms-input-placeholder { @content; }
+  &::-webkit-input-placeholder { @content; }
+}
+
+input,
+textarea {
+  @include input-placeholder {
+    color: $grey;
+  }
+}
+
+$breakpoints: (
+  "phone":        400px,
+  "phone-wide":   480px,
+  "phablet":      560px,
+  "tablet-small": 640px,
+  "tablet":       768px,
+  "tablet-wide":  1024px,
+  "desktop":      1248px,
+  "desktop-wide": 1440px
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+
+.site-header {
+  padding: 2rem;
+  font-size: 1.8rem;
+  @include mq('tablet-wide') {
+    padding-top: 4rem;
+    font-size: 2.4rem;
+  }
+}
+
+@function z($name) {
+  @if index($z-indexes, $name) {
+    @return (length($z-indexes) - index($z-indexes, $name)) + 1;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+    @return null;
+  }
+}
+$z-indexes: (
+  "outdated-browser",
+  "modal",
+  "site-header",
+  "page-wrapper",
+  "site-footer"
+);
+
+.site-header {
+  z-index: z('site-header');
+}
+
+@mixin hardware($backface: true, $perspective: 1000) {
+  @if $backface {
+    backface-visibility: hidden;
+  }
+  perspective: $perspective;
+}
+
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin background($bgColor, $name, $rpt, $size:0 0, $pos:0 0) {
+
+  background-image: url(#{$imgPath}/#{$name}.#{$imgExtension});
+
+  @include backgroundCommon($bgColor, $rpt, $size, $pos);
+
+  @media only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+
+    background-image: url(#{$imgPath}/#{$name}#{$retinaSuffix}.#{$imgExtension});
+
+  }
+
+}
+
+@mixin backgroundGIF($bgColor, $name, $rpt, $size:0 0, $pos:0 0) {
+
+  background-image: url(#{$imgPath}/#{$name}.#{$gifExtension});
+
+  @include backgroundCommon($bgColor, $rpt, $size, $pos);
+
+  @media only screen and (-moz-min-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+
+    background-image: url(#{$imgPath}/#{$name}#{$retinaSuffix}.#{$gifExtension});
+
+  }
+
+}
+
+
+@mixin backgroundCommon($bgColor, $rpt, $size, $pos) {
+  background-color: $bgColor;
+  background-repeat: $rpt;
+  $width: nth($size, 1);
+  $height: nth($size, 2);
+  $lft: nth($pos, 1);
+  $tp: nth($pos, 2);
+  background-size: $width $height;
+  background-position: $lft $tp;
+}
+
+@mixin opacity($value: 0.5) {
+  $ie-value: $value * 100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$ie-value+")";
+  filter: alpha(opacity=$ie-value);
+}
+
+// border mixin
+@mixin border($coordinates: 0 0 0 0, $colour: $greyBorder, $style: solid) {
+  $top: nth($coordinates, 1);
+  $right: nth($coordinates, 2);
+  $bottom: nth($coordinates, 3);
+  $left: nth($coordinates, 4);
+
+  @if not(unitless($top)) {
+    border-top: $top $style $colour;
+  }
+
+  @if not(unitless($right)) {
+    border-right: $right $style $colour;
+  }
+
+  @if not(unitless($bottom)) {
+    border-bottom: $bottom $style $colour;
+  }
+
+  @if not(unitless($left)) {
+    border-left: $left $style $colour;
+  }
+}
+
+// box shadow mixin
+@mixin box_shadow($tl, $tr, $br, $r, $g, $b, $ops) {
+  box-shadow: $tl $tr $br rgba($r, $g, $b, $ops);
+  -webkit-box-shadow: $tl $tr $br rgba($r, $g, $b, $ops);
+  -moz-box-shadow: $tl $tr $br rgba($r, $g, $b, $ops);
+  -o-box-shadow: $tl $tr $br rgba($r, $g, $b, $ops);
+}
+
+$tablet: 768;
+$large: 1024;
+$desktop: 1280;
+
+@mixin tablet {
+  @media only screen and (min-width: $tablet * 1px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media only screen and (min-width: $large * 1px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (min-width: $desktop * 1px) {
+    @content;
+  }
+}

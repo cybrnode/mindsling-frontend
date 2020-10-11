@@ -4,10 +4,19 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "buildThrottle": "sudo node build --prod --aot --build-optimizer",
+    "build": "sudo node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --prod --aot --build-optimizer",
+    "buildK8s": "node ./node_modules/@angular/cli/bin/ng build --prod --aot --build-optimizer",
+    "buildK8sWithMem": "node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build --prod --aot --build-optimizer",
+    "sourceMap": "node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build --prod --aot --source-map",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "localserve": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --disable-host-check --port 4200 --proxy-config proxy.conf.json",
+    "localserveSecure": "ng serve --host 0.0.0.0 --disable-host-check --port 4200 --proxy-config proxy.conf.json --ssl --ssl-key /Users/shahzadhassan/Documents/localhost.key  --ssl-cert /Users/shahzadhassan/Documents/localhost.crt",
+    "localServeNoReload": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --disable-host-check --port 4200 --proxy-config proxy.conf.json --live-reload false",
+    "analyze": "webpack-bundle-analyzer dist/stats.json",
+    "buildWithStats": "sudo node --max_old_space_size=4096 ./node_modules/@angular/cli/bin/ng build --prod --aot --stats-json"
   },
   "private": true,
   "dependencies": {
