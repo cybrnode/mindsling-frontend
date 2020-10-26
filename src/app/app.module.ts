@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '@app/app-routing.module';
 
 import { AppComponent } from './app.component';
 
@@ -11,14 +13,33 @@ import { AlertService } from '@app/services';
 
 import { customHttpProvider } from '@app/interceptors';
 
+import {
+  NavigationBarComponent,
+  FooterComponent,
+  LoginComponent,
+  SignupComponent,
+  ForgotPasswordComponent,
+  ResetPasswordComponent
+} from '@app/components';
+import { HomeComponent } from './components/home/home.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     SearchPipe,
-    UnslugifyPipe
+    UnslugifyPipe,
+    NavigationBarComponent,
+    FooterComponent,
+    LoginComponent,
+    HomeComponent,
+    SignupComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [
     customHttpProvider,

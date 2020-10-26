@@ -1,1 +1,130 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/base";
+
+.WP100 {
+  width: 100% !important;
+}
+
+.CP {
+  cursor: pointer !important;
+}
+
+.textPrimary {
+  color: $primaryClr;
+
+  &:hover {
+    text-decoration: none;
+    color: $primaryClr;
+  }
+}
+
+.customBtn {
+  border-radius: 50px !important;
+
+  &.btnPrimary {
+    background: $primaryClr !important;
+    color: $white !important;
+  }
+
+  &.btnPrimaryBordered {
+    background: $white !important;
+    color: $primaryClr !important;
+    border-radius: 1px solid $infoClr !important;
+  }
+
+  &.btnInfo {
+    background: $infoClr !important;
+    color: $white !important;
+  }
+
+  &.btnInfoBordered {
+    background: $white !important;
+    color: $infoClr !important;
+    border-radius: 1px solid $infoClr !important;
+  }
+
+  &.btnBlock {
+    display: block !important;
+  }
+
+  &.btnLarge {
+    width: 300px;
+    height: 45px;
+  }
+
+  &.btnNormal {
+    width: 150px;
+  }
+
+  &.btnSmall {
+    width: 50px;
+  }
+}
+
+.MT50 {
+  margin-top: 50px !important;
+}
+
+.MT100 {
+  margin-top: 100px !important;
+}
+
+.MT150 {
+  margin-top: 150px !important;
+}
+
+.MB50 {
+  margin-bottom: 50px !important;
+}
+
+.MB100 {
+  margin-bottom: 100px !important;
+}
+
+.MB150 {
+  margin-bottom: 150px !important;
+}
+
+textarea:focus, input:focus, button:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+::placeholder {
+  color: red;
+}
+
+/* do not group these rules */
+*::-webkit-input-placeholder {
+  color: $secondaryClr;
+}
+*:-moz-placeholder {
+  /* FF 4-18 */
+  color: $secondaryClr;
+}
+*::-moz-placeholder {
+  /* FF 19+ */
+  color: $secondaryClr;
+}
+*:-ms-input-placeholder {
+  /* IE 10+ */
+  color: $secondaryClr;
+}
+*::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $secondaryClr;
+}
+*::placeholder {
+  /* modern browser */
+  color: $secondaryClr;
+}
+
+.inputWrap {
+  padding: 10px;
+
+  input {
+    width: 100%;
+    height: 45px;
+    padding: 20px;
+    border: 1px solid $secondaryClr;
+  }
+}

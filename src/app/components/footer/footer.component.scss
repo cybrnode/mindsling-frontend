@@ -1,0 +1,52 @@
+@import "scss/base";
+
+.footerWrap {
+  width: 100%;
+
+  .mainFooter {
+    background: $primaryClr;
+    padding: 50px 50px 30px 50px;
+
+    .footerItems {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
+      ul {
+        list-style-type: none;
+        color: white;
+
+        li {
+          padding: 5px;
+          cursor: pointer;
+        }
+      }
+
+      .socialIconsWrap {
+        display: flex;
+
+        .socialIcon {
+          color: $white;
+          border: 2px solid $white;
+          border-radius: 20px;
+          width: 35px;
+          height: 35px;
+          margin-left: 10px;
+          padding: 5px 0px 0px 0px;
+          cursor: pointer;
+
+          i {
+            font-size: 20px;
+          }
+        }
+
+      }
+
+    }
+  }
+
+  .subFooter {
+    background: $subNavBg;
+    height: 40px;
+  }
+}

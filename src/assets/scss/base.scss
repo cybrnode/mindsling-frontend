@@ -1,3 +1,10 @@
+$grey: #eeeeee;
+$subNavBg: #313e4f;
+$white: #ffffff;
+$primaryClr: #01a89e;
+$infoClr: #6b87d5;
+$secondaryClr: #c5c3c4;
+
 @mixin push--auto {
   margin: {
     left: auto;
@@ -11,11 +18,11 @@
   position: $pos;
 }
 
-div::after {
-  @include pseudo;
-  top: -1rem; left: -1rem;
-  width: 1rem; height: 1rem;
-}
+//div::after {
+//  @include pseudo;
+//  top: -1rem; left: -1rem;
+//  width: 1rem; height: 1rem;
+//}
 
 @mixin responsive-ratio($x,$y, $pseudo: false) {
   $padding: unquote( ( $y / $x ) * 100 + '%' );
@@ -30,9 +37,9 @@ div::after {
   }
 }
 
-div {
-  @include responsive-ratio(16,9);
-}
+//div {
+//  @include responsive-ratio(16,9);
+//}
 
 @mixin css-triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
   @include pseudo($pos: $position);

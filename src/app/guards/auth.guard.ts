@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { environment as ENV } from '@env/environment';
-import { AuthenticationNgrxService } from '@app/core/appState/services/authenticationNgrx.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

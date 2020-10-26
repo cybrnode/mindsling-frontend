@@ -1,0 +1,40 @@
+@import "scss/base";
+
+.navbarWrapper {
+  width: 100%;
+
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    background: $subNavBg;
+    width: 100%;
+
+    .navItemsWrap {
+      display: flex;
+      .navItem {
+        color: $white;
+        font-size: 14px;
+        padding: 0px 10px;
+        cursor: pointer;
+
+        &.borderRight {
+          border-right: 1px solid $white;
+        }
+      }
+    }
+  }
+
+  .mainNavBarWrap {
+    background: $white;
+
+    .mainNavBar {
+      display: flex;
+      padding: 30px 10px;
+
+      .mainNavItems {
+        display: flex;
+      }
+    }
+  }
+
+}

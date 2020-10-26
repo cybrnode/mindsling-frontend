@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import {
+  ForgotPasswordComponent,
+  LoginComponent,
+  ResetPasswordComponent,
+  SignupComponent
+} from '@app/components';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'reset-password', component: ResetPasswordComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,

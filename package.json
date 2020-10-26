@@ -12,7 +12,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "localserve": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --disable-host-check --port 4200 --proxy-config proxy.conf.json",
+    "localserve": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --disable-host-check --port 4500 --proxy-config proxy.conf.json",
     "localserveSecure": "ng serve --host 0.0.0.0 --disable-host-check --port 4200 --proxy-config proxy.conf.json --ssl --ssl-key /Users/shahzadhassan/Documents/localhost.key  --ssl-cert /Users/shahzadhassan/Documents/localhost.crt",
     "localServeNoReload": "node --max_old_space_size=5048 ./node_modules/@angular/cli/bin/ng serve --host 0.0.0.0 --disable-host-check --port 4200 --proxy-config proxy.conf.json --live-reload false",
     "analyze": "webpack-bundle-analyzer dist/stats.json",
@@ -28,6 +28,9 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
+    "bootstrap": "^4.5.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
