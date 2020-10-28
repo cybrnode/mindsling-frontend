@@ -6,12 +6,15 @@ import {
   ResetPasswordComponent,
   SignupComponent
 } from '@app/components';
+import { ParentsModule } from '@app/parents-module/parents.module';
 
 const routes: Routes = [
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
-  { path: 'reset-password', component: ResetPasswordComponent }
+  { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'parents' , loadChildren: '@app/parents-module/parents.module#ParentsModule'}
 ];
 
 @NgModule({

@@ -22,6 +22,7 @@ import {
   ResetPasswordComponent
 } from '@app/components';
 import { HomeComponent } from './components/home/home.component';
+import { ParentsComponent } from './parents-module/parents.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HomeComponent } from './components/home/home.component';
     HomeComponent,
     SignupComponent,
     ForgotPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ParentsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,9 @@
 @import "assets/scss/base";
 
+.row:focus {
+  outline: none !important;
+}
+
 .WP100 {
   width: 100% !important;
 }
@@ -8,12 +12,25 @@
   cursor: pointer !important;
 }
 
+.DF {
+  display: flex !important;
+}
+
 .textPrimary {
   color: $primaryClr;
 
   &:hover {
     text-decoration: none;
     color: $primaryClr;
+  }
+}
+
+.textSecondary {
+  color: $secondaryClr;
+
+  &:hover {
+    text-decoration: none;
+    color: $secondaryClr;
   }
 }
 
@@ -66,6 +83,10 @@
 
 .MT100 {
   margin-top: 100px !important;
+}
+
+.MT120 {
+  margin-top: 120px !important;
 }
 
 .MT150 {
@@ -127,4 +148,16 @@ textarea:focus, input:focus, button:focus{
     padding: 20px;
     border: 1px solid $secondaryClr;
   }
+}
+
+.form-control {
+  border: 1px solid $secondaryClr !important;
+}
+
+.form-control:focus {
+  color: $black !important;
+  background-color: $white !important;
+  border-color: $primaryClr !important;
+  outline: 0 !important;
+  box-shadow: none !important;
 }

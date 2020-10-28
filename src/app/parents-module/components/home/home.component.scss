@@ -1,0 +1,52 @@
+@import "scss/base";
+
+.mainPageWrap {
+  width: 100%;
+  padding: 50px 0px;
+
+  .headWrap {
+    padding: 0px 50px;
+    font-size: 25px;
+  }
+
+  .formWrap {
+    margin-top: 50px;
+    width: 350px;
+    display: inline-block;
+
+  }
+
+  .btnWrap {
+    margin-top: 50px;
+  }
+
+}
+
+.select-child:focus {
+  background-color: #fff !important;
+  border-color: $primaryClr !important;
+  outline: 0 !important;
+}
+
+.menusWrap {
+
+  .menu {
+    padding: 20px 0px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    .menuIcon {
+      color: $primaryClr;
+      font-size: 50px;
+    }
+
+    .menuText {
+
+    }
+  }
+
+}
